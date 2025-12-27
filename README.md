@@ -55,5 +55,13 @@ sequenceDiagram
 * The installer assumes a zero-trust client model; all critical validation happens on the backend.
 * Configuration and branding are isolated in app.nsh to avoid logic modification.
 
-# Icons
-Icons (installer.ico and uninstaller.ico) created by McDo Design (Susumu Yoshida) 
+
+## Third-party Assets
+
+- Installer icon: `installer.ico`  
+  Author: `McDo Design (Susumu Yoshida)`  
+  License: `MIT`
+
+- Uninstaller icon: `uninstaller.ico`  
+  Author: `McDo Design (Susumu Yoshida)`  
+  License: `MIT`
