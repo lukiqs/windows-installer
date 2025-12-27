@@ -38,10 +38,8 @@ sequenceDiagram
     Installer->>PC: Get machine guid
     PC-->>Installer: xxxx-xxxx
     Installer->>API: POST (key in auth header) Register device {"machineGuid": "xxxx-xxxx"}
-    API-->>Installer: HTTP 200 Success {"deviceId": "yyy"} / 401 Unauthorized
+    API-->>Installer: HTTP 200 Success {"deviceId": "yyy", "url": "https://xx.x"} / 401 Unauthorized
     Installer->>PC: Save unique key and device id in registry
-    Installer->>API: GET (key in auth header) Download url
-    API-->>Installer: HTTP 200 Success {"url": "https://xx.x"}
     Installer->>PC: Download zip form https://xx.x
     Installer->>PC: Unpack zip
     Installer->>PC: Finish installation
