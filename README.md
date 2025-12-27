@@ -25,7 +25,29 @@ and branding are centralized in app.nsh for easy customization.
 8. ZIP archive is extracted and binaries are installed.
 9. Installation completes.
 
-
+```mermaid
+sequenceDiagram
+    actor User
+    box windows-installer
+        participant Installer
+    end
+    User--)PC: Run
+    PC--)Installer: Run
+    User--)Installer: Choice destination folder
+    User--)Installer: Set installation key
+    Installer->>API: POST Validate installation key
+    API-->>Installer: HTTP 204 Success / 401 Unauthorized
+    Installer->>PC: Save installation key in registry
+    Installer->>PC: Get machine guid
+    PC-->>Installer: xxxx-xxxx
+    Installer->>API: POST Register device {"machineGuid": "xxxx-xxxx"}
+    API-->>Installer: HTTP 200 Success {"deviceId": "yyy"}
+    Installer->>PC: Save unique device id in registry
+    Installer->>API: GET Download url
+    API-->>Installer: HTTP 200 Success {"url": "http://xx.x"}
+    Installer->>PC: Download zip form http://xx.x
+    Installer->>PC: Unpack zip 
+```
 
 ## Security Notes
 * The installer store registered device identifier.
